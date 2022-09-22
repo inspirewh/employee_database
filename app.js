@@ -1,6 +1,7 @@
 //import packages & files
 const inquirer = require("inquirer")
-const { getDepartments } = require("./operations/department")
+const { getDepartments, addDepartment } = require("./operations/department")
+const { getRoles, addRole } = require("./operations/roles")
 
 //Main function & initial prompt
 
@@ -17,8 +18,7 @@ function main(){
                 "View all employees",
                 "Add a role",
                 "Add an employee",
-                "Edit an employee",
-                "Delete an entry",
+                "Update an employee Role", //once user selected this, should see a list of employee name to choose from, select a new role
                 "Exit application",
     
             ]
@@ -28,13 +28,20 @@ function main(){
             type: "input",
             name: "department_name",
             when: (ans) => ans.operation === 'Add department',
+          },
+          { // prompts to create a new role
+            message: "What is the title of the role?",
+            type: "input",
+            name: "role.title",
+            when: (ans) => ans.operation === 'Add an employee',
           }
     
     ]).then(async(ans) => {
         switch (ans.operation){
             //when user selects this > call view all department function > imported from department.js
             case "Add department":
-                const department = await addDepartment(ans.department_name); //this will be an array of departments
+                const department = await addDepartment(ans.department_name); 
+                console.table(department);
                 break;
 
             
@@ -44,8 +51,20 @@ function main(){
                 break;
     
             case "view all roles":
+                const roles = await getRoles(); //this will be an array of roles
+                console.table(roles);
                 break;
-    
+
+            case "Add a role":
+                const role = await addRole(ans.role_name); 
+                console.table(role);
+                break;
+
+            case "Add an Employee":
+                const employee = await addRole(ans.employee_name); 
+                console.table(employee);
+                break;
+
             case "Exit application":
                 process.exit(0);
         }

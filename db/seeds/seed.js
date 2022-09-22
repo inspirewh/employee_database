@@ -1,8 +1,8 @@
-const { seedDepartments } = require("./seed-departments");
+//const { seedDepartments } = require("./seed-departments");
 
 
-async function main (){
-    await seedDepartments();
-}
+//async function main (){
+  //  await seedDepartments();
+//}
 
-main();
+//main();

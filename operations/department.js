@@ -9,9 +9,10 @@ async function getDepartments() {
   }
 
 //function to add a department
-async function addDepartment(name){
+async function addDepartment(name) {
     const db = await connect();
     await db.query('INSERT INTO `db_employee_cms`.`departments` (`name`) VALUES (?)', name);
+    
 }
 
 

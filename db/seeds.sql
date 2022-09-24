@@ -19,16 +19,15 @@ VALUES
 ('Finance Analyst', '80000', 3),
 ('Human Resources Coordinator', '80000', 2),
 ('Human Resources Assistant', '65000', 2),
-('Marketing Manager', '65000', 1),
+('Marketing Manager', '65000', 1);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES
-("John", "Smith", 1, NULL),
-("Michelle", "Williams", 2, NULL),
-("Steve", "Watts", 3, NULL),
-("Ryan", "Jefferson", 4, NULL),
-("Jessica", "James", 5, 1),
-("Linda", "Wood", 6, 2),
-("Roger", "Doe", 7, 3),
-("Darren", "Ryan", 8, 4);
-
+('John', 'Smith', 1, NULL),
+('Michelle', 'Williams', 2, NULL),
+('Steve', 'Watts', 3, NULL),
+('Ryan', 'Jefferson', 4, NULL),
+('Jessica', 'James', 5, 1),
+('Linda', 'Wood', 6, 2),
+('Roger', 'Doe', 7, 3),
+('Darren', 'Ryan', 8, 4);

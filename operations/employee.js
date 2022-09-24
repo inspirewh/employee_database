@@ -12,23 +12,19 @@ async function getEmployees() {
 // Add a new employee to the DB
 async function addEmployee(firstName, lastName, roleID, managerID) {
     const db = await connect();
+    // Array of inputs to protect from sql injection
     const inputs = [firstName, lastName, roleID, managerID];
+    // Query the db with inputs
     await db.query(
-      "INSERT INTO `db_employee_cms`.`employees` (`first_name`, `last_name`, `role_id`,`manager_id`) VALUES (?,?,?,?)",
+      "INSERT INTO `company_db`.`employees` (`first_name`, `last_name`, `role_id`,`manager_id`) VALUES (?,?,?,?)",
       inputs
     );
   }
 
-  // Delete Employee in the DB by ID
-async function deleteEmployee(employeeID) {
-    const db = await connect();
-    const deleteQuery = "DELETE FROM `db_employee_cms`.`employees` WHERE id = ?";
-    await db.query(deleteQuery, employeeID)
-}
+
 
 
 module.exports = {
     getEmployees,
     addEmployee,
-    deleteEmployee,
 }

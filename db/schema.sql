@@ -4,37 +4,30 @@ CREATE DATABASE db_employee_cms;
 USE db_employee_cms;
 
 CREATE TABLE departments (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30) NOT NULL,
-  PRIMARY KEY (id));
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
 
 CREATE TABLE roles (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL NOT NULL,
-  department_id INT UNSIGNED NOT NULL,
-  PRIMARY KEY (id),
-  INDEX fk_roles_1_idx (department_id ASC) VISIBLE,
-  CONSTRAINT fk_roles_1 
-    FOREIGN KEY (department_id)
-    REFERENCES departments (id)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION);
+  department_id INT NOT NULL,
+  FOREIGN KEY (department_id)
+  REFERENCES departments (id)
+  ON DELETE CASCADE
+);
 
 CREATE TABLE employees (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-  role_id INT UNSIGNED NOT NULL,
-  manager_id INT UNSIGNED NULL,
-  PRIMARY KEY (id));
-
-  ALTER TABLE employees
-  ADD FOREIGN KEY (role_id) REFERENCES roles(id);
+  role_id INT NOT NULL,
+  manager_id INT NULL,
+  FOREIGN KEY (role_id) 
+  REFERENCES roles(id)
+  ON DELETE CASCADE,
+  FOREIGN KEY (manager_id)
+  REFERENCES employees(id)
   ON DELETE CASCADE
-  ON UPDATE NO ACTION,
-
-  ALTER TABLE employees
-  ADD FOREIGN KEY (manager_id) REFERENCES employees(id);
-  ON DELETE CASCADE
-  ON UPDATE NO ACTION,
+);

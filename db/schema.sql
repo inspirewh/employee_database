@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS `db_employee_cms`;
-CREATE SCHEMA `db_employee_cms`;
+CREATE DATABASE `db_employee_cms`;
 
 USE `db_employees_cms`;
 
@@ -30,16 +30,16 @@ CREATE TABLE `employees` (
   PRIMARY KEY (`id`));
 
 ALTER TABLE `employees` 
-ADD INDEX `fk_role_id_idx` (`role_id` ASC) VISIBLE,
-ADD INDEX `fk_employees_2_idx` (`manager_id` ASC) VISIBLE;
+INDEX `fk_role_id_idx` (`role_id` ASC) VISIBLE,
+INDEX `fk_employees_2_idx` (`manager_id` ASC) VISIBLE;
 ;
 ALTER TABLE `employees` 
-ADD CONSTRAINT `fk_employees_1`
+CONSTRAINT `fk_employees_1`
   FOREIGN KEY (`role_id`)
   REFERENCES `roles` (`id`)
   ON DELETE CASCADE
   ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_employees_2`
+CONSTRAINT `fk_employees_2`
   FOREIGN KEY (`manager_id`)
   REFERENCES `employees` (`id`)
   ON DELETE SET NULL

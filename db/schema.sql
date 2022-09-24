@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS `db_employee_cms`;
 CREATE DATABASE `db_employee_cms`;
 
-USE `db_employees_cms`;
+USE `db_employee_cms`;
 
 CREATE TABLE `departments` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE `employees` (
   PRIMARY KEY (`id`));
 
 ALTER TABLE `employees` 
-INDEX `fk_role_id_idx` (`role_id` ASC) VISIBLE,
+INDEX `fk_employees_1_idx` (`role_id` ASC) VISIBLE,
 INDEX `fk_employees_2_idx` (`manager_id` ASC) VISIBLE;
 ;
 ALTER TABLE `employees` 

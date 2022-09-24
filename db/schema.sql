@@ -29,15 +29,12 @@ CREATE TABLE employees (
   manager_id INT UNSIGNED NULL,
   PRIMARY KEY (id));
 
-CONSTRAINT fk_employees_1
-  FOREIGN KEY (role_id)
-  REFERENCES roles(id)
+  ALTER TABLE employees
+  ADD FOREIGN KEY (role_id) REFERENCES roles(id);
   ON DELETE CASCADE
   ON UPDATE NO ACTION,
-  INDEX fk_employees_2_idx (manager_id ASC) VISIBLE;
-CONSTRAINT fk_employees_2
-  FOREIGN KEY (manager_id)
-  REFERENCES employees (id)
-  ON DELETE SET NULL
-  ON UPDATE NO ACTION;
-  INDEX fk_employees_1_idx (role_id ASC) VISIBLE,
+
+  ALTER TABLE employees
+  ADD FOREIGN KEY (manager_id) REFERENCES employees(id);
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION,

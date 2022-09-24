@@ -1,11 +1,11 @@
 {
-  "name": "department-database",
+  "name": "db_employee_cms",
   "version": "1.0.0",
   "description": "## Your Task",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node db/seeds/seed.js"
+    "seed": "node db/seeds.sql"
   },
   "author": "",
   "license": "ISC",

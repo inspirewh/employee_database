@@ -8,7 +8,7 @@ async function getRoles() {
     return roles;
   }
 
-async function addRole(title, salary, department_id) {
+  async function addRole(title, salary, department_id) {
     const db = await connect();
     const inputs = [title, salary, department_id];
     await db.query(
@@ -16,7 +16,6 @@ async function addRole(title, salary, department_id) {
       inputs
     );
   }
-
 
 module.exports = {
     getRoles,

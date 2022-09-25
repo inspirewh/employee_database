@@ -54,9 +54,10 @@ function main(){
 
             case "Exit application":
                 process.exit(0);
+            default: 
+            main();
         }
 
-        await main();
 
     })
 
